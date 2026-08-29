@@ -1,0 +1,87 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}{{ devotional.topic }} — Leviticals Devotional{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <p class="dev-date-label">{{ devotional.date|date:"l, F d, Y" }}</p>
+        <h1>{{ devotional.topic }}</h1>
+        <p class="dev-scripture-hero">📖 {{ devotional.scripture }}</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="devotional-layout">
+
+            <div class="devotional-main">
+
+				<!-- Cover Image (optional) -->
+					{% if devotional.cover_image %}
+				<img src="{{ devotional.cover_image.url }}"
+					alt="{{ devotional.topic }}"
+					class="article-cover">
+					{% endif %}
+
+                <!-- Scripture Text -->
+                <div class="dev-block dev-scripture-block">
+                    <h4>📜 Scripture</h4>
+                    <blockquote>{{ devotional.scripture_text|safe }}</blockquote>
+                    — {{ devotional.scripture }}
+                </div>
+
+                <!-- Life Nugget -->
+                <div class="dev-block">
+                    <h4>💡 Life Nugget</h4>
+                    <div class="dev-body">
+					{{ devotional.life_nugget|safe }}
+					</div>
+                </div>
+
+                <!-- Prayer -->
+                <div class="dev-block dev-prayer-block">
+                    <h4>🙏 Prayer</h4>
+                    <div class="dev-body">
+					{{ devotional.prayer|safe }}
+					</div>
+                </div>
+
+                <!-- Further Studies -->
+                {% if devotional.further_studies %}
+                <div class="dev-block">
+                    <h4>📚 Further Studies</h4>
+                    <p class="further-studies">{{ devotional.further_studies }}</p>
+                </div>
+                {% endif %}
+
+                <!-- Author -->
+                <div class="dev-author">
+                    <span>— {{ devotional.author }}</span>
+                </div>
+
+                <!-- Prev / Next Navigation -->
+                <div class="dev-navigation">
+                    {% if prev_dev %}
+                    <a href="{% url 'devotional_detail' prev_dev.slug %}" class="dev-nav-btn">
+                        ← {{ prev_dev.date|date:"M d" }}: {{ prev_dev.topic|truncatewords:5 }}
+                    </a>
+                    {% else %}
+                    <span></span>
+                    {% endif %}
+
+                    {% if next_dev %}
+                    <a href="{% url 'devotional_detail' next_dev.slug %}" class="dev-nav-btn">
+                        {{ next_dev.date|date:"M d" }}: {{ next_dev.topic|truncatewords:5 }} →
+                    </a>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

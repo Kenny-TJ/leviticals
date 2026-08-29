@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}{{ article.title }} — Leviticals{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        {% if article.category %}
+        <span class="article-tag">{{ article.category.name }}</span>
+        {% endif %}
+        <h1>{{ article.title }}</h1>
+        <div class="article-meta" style="margin-top:1rem;">
+            <span>By {{ article.author }}</span>
+            <span>{{ article.created_at|date:"F d, Y" }}</span>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="article-layout">
+
+            <!-- Main Content -->
+            <div class="article-body">
+                {% if article.cover_image %}
+                <img src="{{ article.cover_image.url }}"
+                     alt="{{ article.title }}"
+                     class="article-cover">
+                {% endif %}
+                <div class="article-text">
+				{{ article.body|safe }}
+				</div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="article-sidebar">
+                {% if related_articles %}
+                <div class="sidebar-block">
+                    <h4>Related Articles</h4>
+                    {% for rel in related_articles %}
+                    <div class="sidebar-item">
+                        <a href="{% url 'article_detail' rel.slug %}">
+                            {{ rel.title }}
+                        </a>
+                        <span class="sidebar-date">
+                            {{ rel.created_at|date:"M d, Y" }}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="sidebar-block">
+                    <h4>Latest Devotional</h4>
+                    <p style="font-size:0.85rem; color:var(--text-light);">
+                        Start your day with the Word.
+                    </p>
+                    <a href="{% url 'devotional_list' %}" class="btn btn-gold"
+                       style="font-size:0.8rem; padding:0.6rem 1.2rem;">
+                        Read Today's Devotional
+                    </a>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

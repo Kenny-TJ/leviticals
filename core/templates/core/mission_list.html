@@ -1,0 +1,64 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Missions — Leviticals{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <h1>Missions</h1>
+        <p>Stories from the field — taking the Gospel to the nations.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        {% if missions %}
+        <div class="mission-grid">
+            {% for mission in missions %}
+            <div class="mission-card">
+                {% if mission.cover_image %}
+                <div class="mission-card-img">
+                    <img src="{{ mission.cover_image.url }}" alt="{{ mission.title }}">
+                </div>
+                {% else %}
+                <div class="mission-card-img placeholder">
+                    <span>🌍</span>
+                </div>
+                {% endif %}
+                <div class="mission-card-body">
+                    {% if mission.location %}
+                    <p class="mission-location">📍 {{ mission.location }}</p>
+                    {% endif %}
+                    <h3>
+                        <a href="{% url 'mission_detail' mission.slug %}">
+                            {{ mission.title }}
+                        </a>
+                    </h3>
+                    <p class="article-excerpt">
+                        {{ mission.body|truncatewords:30 }}
+                    </p>
+                    <div class="article-meta">
+                        <span>{{ mission.author }}</span>
+                        <span>{{ mission.created_at|date:"M d, Y" }}</span>
+                    </div>
+                    <a href="{% url 'mission_detail' mission.slug %}" class="read-more">
+                        Read Story →
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% else %}
+        <div class="empty-state">
+            <p>Mission stories coming soon.</p>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+{% endblock %}

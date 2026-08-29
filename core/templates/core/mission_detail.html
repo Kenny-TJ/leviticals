@@ -1,0 +1,67 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}{{ mission.title }} — Leviticals Missions{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        {% if mission.location %}
+        <p class="dev-date-label">📍 {{ mission.location }}</p>
+        {% endif %}
+        <h1>{{ mission.title }}</h1>
+        <div class="article-meta" style="margin-top:1rem;">
+            <span>By {{ mission.author }}</span>
+            <span>{{ mission.created_at|date:"F d, Y" }}</span>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="article-layout">
+
+            <div class="article-body">
+                {% if mission.cover_image %}
+                <img src="{{ mission.cover_image.url }}"
+                     alt="{{ mission.title }}"
+                     class="article-cover">
+                {% endif %}
+				<div class="article-text">
+					{{ mission.body|safe }}
+				</div>
+            </div>
+
+            <aside class="article-sidebar">
+                {% if related_missions %}
+                <div class="sidebar-block">
+                    <h4>More Mission Stories</h4>
+                    {% for rel in related_missions %}
+                    <div class="sidebar-item">
+                        <a href="{% url 'mission_detail' rel.slug %}">{{ rel.title }}</a>
+                        {% if rel.location %}
+                        <span class="sidebar-date">📍 {{ rel.location }}</span>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="sidebar-block">
+                    <h4>Support Missions</h4>
+                    <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:1rem;">
+                        Partner with us in taking the Gospel to the nations.
+                    </p>
+                    <a href="#" class="btn btn-gold"
+                       style="font-size:0.8rem; padding:0.6rem 1.2rem;">
+                        Become a Partner
+                    </a>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

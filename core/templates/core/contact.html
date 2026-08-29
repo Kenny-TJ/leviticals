@@ -1,0 +1,125 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Contact — Leviticals{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you — questions, partnerships, testimonies, or prayer requests.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="contact-layout">
+
+            <!-- Contact Form -->
+            <div class="contact-form-wrap">
+
+                {% if messages %}
+                {% for msg in messages %}
+                <div class="form-message {% if msg.tags == 'success' %}form-success{% else %}form-error{% endif %}">
+                    {{ msg }}
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                <h2>Send a Message</h2>
+                <p style="color:var(--text-light); margin-bottom:2rem;">
+                    Fill in the form below and we'll get back to you as soon as possible.
+                </p>
+
+                <form method="POST" action="{% url 'contact' %}" class="contact-form">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name"
+                               placeholder="Your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email"
+                               placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject"
+                               placeholder="What is this about?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message <span class="required">*</span></label>
+                        <textarea id="message" name="message" rows="7"
+                                  placeholder="Write your message here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-gold" style="width:100%; font-size:1rem;">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <aside class="contact-info">
+
+                <div class="sidebar-block">
+                    <h4>Ways to Connect</h4>
+
+                    <div class="contact-info-item">
+                        <span class="contact-icon">✉️</span>
+                        <div>
+                            <strong>Email</strong>
+                            <p>Use the contact form and we'll reply by email.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <span class="contact-icon">🤝</span>
+                        <div>
+                            <strong>Partnership</strong>
+                            <p>Interested in partnering with Leviticals ministry?
+                               Mention it in your message.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <span class="contact-icon">🙏</span>
+                        <div>
+                            <strong>Prayer Requests</strong>
+                            <p>Send us your prayer requests. We take them seriously
+                               and pray over every one.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <span class="contact-icon">✍️</span>
+                        <div>
+                            <strong>Content Contributions</strong>
+                            <p>Have an article, testimony, or mission story to share?
+                               We'd love to hear it.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-block" style="margin-top:1.5rem; text-align:center;">
+                    <h4>Our Mandate</h4>
+                    <p style="font-size:0.88rem; color:var(--text-light); font-style:italic; line-height:1.8;">
+                        "Go therefore and make disciples of all nations..."
+                    </p>
+                    <p style="font-size:0.78rem; color:var(--gold); letter-spacing:1px;">
+                        — Matthew 28:19
+                    </p>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

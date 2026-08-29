@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 900 190"
+     width="900" height="190"
+     role="img" aria-labelledby="title desc">
+  <title id="title">Holy Nation</title>
+  <desc id="desc">Minimalist Holy Nation logo with a stylized person and the text Holy Nation, followed by 1 Peter 2:9.</desc>
+
+  <!-- Transparent background: suitable for rich-black website footers -->
+  <g fill="#FFFFFF">
+    <!-- Stylized human figure / H mark -->
+    <circle cx="76" cy="45" r="16"/>
+
+    <!-- Left raised arm -->
+    <path d="M68 62
+             C52 57, 42 44, 40 26
+             C39 22, 41 20, 44 22
+             C47 24, 47 30, 49 35
+             C52 45, 58 51, 69 55
+             Z"/>
+
+    <!-- Right raised arm -->
+    <path d="M84 57
+             C95 50, 101 39, 102 25
+             C102 21, 104 20, 106 22
+             C108 24, 107 31, 106 36
+             C104 48, 98 58, 88 66
+             Z"/>
+
+    <!-- Curved body -->
+    <path d="M70 58
+             C78 60, 86 65, 91 73
+             C96 82, 96 95, 94 108
+             C92 120, 90 133, 88 147
+             C87 153, 84 157, 82 157
+             C80 154, 81 148, 80 141
+             C79 128, 76 117, 71 108
+             C66 99, 61 91, 58 81
+             C55 72, 59 64, 70 58
+             Z"/>
+  </g>
+
+  <!-- Main wordmark -->
+  <text x="104" y="101"
+        font-family="Montserrat, Arial, Helvetica, sans-serif"
+        font-size="49"
+        font-weight="400"
+        letter-spacing="6"
+        fill="#FFFFFF">OLY</text>
+
+  <text x="267" y="101"
+        font-family="Montserrat, Arial, Helvetica, sans-serif"
+        font-size="49"
+        font-weight="400"
+        letter-spacing="7"
+        fill="#FFFFFF">NATION...</text>
+
+  <!-- Scripture reference -->
+  <text x="438" y="134"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="16"
+        font-weight="400"
+        letter-spacing="4"
+        fill="#FFFFFF">1 Peter 2 : 9</text>
+</svg>

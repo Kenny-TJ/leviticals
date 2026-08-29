@@ -1,0 +1,143 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Give — Support Leviticals Ministry{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <h1>Partner With Us</h1>
+        <p>Every contribution keeps the Gospel broadcasting — to families, communities, and nations.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="give-layout">
+
+            <div class="give-main">
+
+                <!-- Why Give -->
+                <div class="about-block">
+                    <h2>Why Your Support Matters</h2>
+                    <p>
+                        Leviticals is a faith-driven media ministry. Every article published,
+                        every devotional written, every broadcast produced costs time, effort,
+                        and resources. Your partnership directly sustains this work.
+                    </p>
+                    <p>
+                        When you give to Leviticals, you are not giving to a person —
+                        you are sowing into the Gospel. You are helping ensure that someone,
+                        somewhere, encounters the Word of God today.
+                    </p>
+                </div>
+
+                <!-- What Your Gift Does -->
+                <div class="about-block">
+                    <h2>What Your Gift Supports</h2>
+                    <div class="belief-list">
+                        <div class="belief-item">
+                            <span class="belief-icon">✦</span>
+                            <p>Production and publishing of daily devotionals,
+                               articles, and Gospel content.</p>
+                        </div>
+                        <div class="belief-item">
+                            <span class="belief-icon">✦</span>
+                            <p>Music recording, lyrics publishing, and
+                               Gospel music outreach.</p>
+                        </div>
+                        <div class="belief-item">
+                            <span class="belief-icon">✦</span>
+                            <p>Mission stories and support for field
+                               evangelism efforts.</p>
+                        </div>
+                        <div class="belief-item">
+                            <span class="belief-icon">✦</span>
+                            <p>Website hosting, maintenance, and
+                               digital infrastructure.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How to Give -->
+                <div class="about-block">
+                    <h2>How to Give</h2>
+                    <p>
+                        To make a donation or discuss partnership, please reach out to us
+                        directly through the contact page. We will provide you with the
+                        appropriate giving details based on your location.
+                    </p>
+                    <p>
+                        We believe in transparency — every gift is accounted for and
+                        directed toward the ministry's Gospel work.
+                    </p>
+                    <a href="{% url 'contact' %}" class="btn btn-gold"
+                       style="margin-top:1rem; display:inline-block;">
+                        Contact Us to Give
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="about-sidebar">
+
+                <div class="sidebar-block">
+                    <h4>Ways to Partner</h4>
+
+                    <div class="involve-item">
+                        <h5>💛 One-Time Gift</h5>
+                        <p>A single contribution toward the Gospel work
+                           of Leviticals ministry.</p>
+                    </div>
+
+                    <div class="involve-item" style="margin-top:1.5rem;">
+                        <h5>🔄 Regular Partnership</h5>
+                        <p>Commit to monthly support — the most
+                           sustainable way to keep the ministry running.</p>
+                    </div>
+
+                    <div class="involve-item" style="margin-top:1.5rem;">
+                        <h5>🙌 In-Kind Support</h5>
+                        <p>Contribute skills — writing, design,
+                           music production, or technical help.</p>
+                    </div>
+
+                    <a href="{% url 'contact' %}" class="btn btn-gold"
+                       style="width:100%; text-align:center;
+                              margin-top:1.5rem; display:block;
+                              font-size:0.85rem;">
+                        Get in Touch
+                    </a>
+                </div>
+
+                <div class="sidebar-block" style="margin-top:1.5rem; text-align:center;">
+                    <h4>A Promise</h4>
+                    <p style="font-size:0.88rem; color:var(--text-light);
+                               font-style:italic; line-height:1.8;">
+                        "And my God shall supply all your need according
+                        to His riches in glory by Christ Jesus."
+                    </p>
+                    <p style="font-size:0.78rem; color:var(--gold); letter-spacing:1px;">
+                        — Philippians 4:19
+                    </p>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+</section>
+
+<!-- Scripture Banner -->
+<section class="scripture-banner">
+    <div class="container">
+        <blockquote>
+            "He who sows sparingly will also reap sparingly, and he who sows
+            bountifully will also reap bountifully."
+        </blockquote>
+        — 2 Corinthians 9:6
+    </div>
+</section>
+
+{% endblock %}

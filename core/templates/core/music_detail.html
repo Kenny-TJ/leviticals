@@ -1,0 +1,76 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}{{ track.title }} — Leviticals Music{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <span class="article-tag">{{ track.get_music_type_display }}</span>
+        <h1>{{ track.title }}</h1>
+        <p>{{ track.artist }}</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="music-layout">
+
+            <div class="music-main">
+
+                <!-- YouTube Embed -->
+                {% if track.youtube_url %}
+                <div class="video-embed">
+                    <iframe src="{{ track.youtube_url }}"
+                            title="{{ track.title }}"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write;
+                                   encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                {% endif %}
+
+                <!-- Lyrics -->
+                {% if track.lyrics %}
+                <div class="dev-block">
+                    <h4>🎵 Lyrics</h4>
+                    <div class="lyrics-body">
+                        {{ track.lyrics|linebreaks }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Chords -->
+                {% if track.chords %}
+                <div class="dev-block">
+                    <h4>🎸 Chords</h4>
+                    <div class="chords-body">
+                        <pre>{{ track.chords }}</pre>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="article-sidebar">
+                {% if related_tracks %}
+                <div class="sidebar-block">
+                    <h4>More Music</h4>
+                    {% for rel in related_tracks %}
+                    <div class="sidebar-item">
+                        <a href="{% url 'music_detail' rel.slug %}">{{ rel.title }}</a>
+                        <span class="sidebar-date">{{ rel.artist }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </aside>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}About — Leviticals Holy Nation{% endblock %}
+
+{% block content %}
+
+<!-- ABOUT HERO -->
+<section class="page-hero">
+    <div class="container">
+        <h1>About Leviticals</h1>
+        <p>Set apart for the ministry of the Word, worship, and the proclamation of the Gospel.</p>
+    </div>
+</section>
+
+<!-- MISSION STATEMENT -->
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+
+            <div class="about-main">
+
+                <!-- Who We Are -->
+                <div class="about-block">
+                    <h2>Who We Are</h2>
+                    <p>
+                        Leviticals is a Christian media ministry committed to broadcasting the Gospel
+                        of Jesus Christ through the written Word, music, and digital media. We are
+                        named after the Levites — the tribe set apart in Israel for the ministry of
+                        the sanctuary, the keepers of the Word, the worshippers before the Lord.
+                    </p>
+                    <p>
+                        We believe the same calling rests on the Church today: to be a royal
+                        priesthood, a holy nation, a people set apart to proclaim the excellencies
+                        of Him who called us out of darkness into His marvellous light.
+                        <em>— 1 Peter 2:9</em>
+                    </p>
+                </div>
+
+                <!-- Our Belief -->
+                <div class="about-block">
+                    <h2>What We Believe</h2>
+                    <p>
+                        We believe that the Gospel of Jesus Christ is the only solution to the
+                        problems of humanity — personal, social, national, and global. Every
+                        article, devotional, song, and broadcast we produce is grounded in this
+                        conviction.
+                    </p>
+                    <div class="belief-list">
+                        <div class="belief-item">
+                            <span class="belief-icon">✦</span>
+                            <p>The Bible is the inspired, infallible Word of God and our
+                               final authority in all matters of faith and conduct.</p>
+                        </div>
+                        <div class="belief-item">
+                            <span class="belief-icon">✦</span>
+                            <p>Jesus Christ is Lord — fully God and fully man, crucified
+                               for our sins, risen from the dead, and coming again.</p>
+                        </div>
+                        <div class="belief-item">
+                            <span class="belief-icon">✦</span>
+                            <p>Salvation is by grace alone, through faith alone,
+                               in Christ alone — not by works.</p>
+                        </div>
+                        <div class="belief-item">
+                            <span class="belief-icon">✦</span>
+                            <p>The Great Commission is the mandate of every believer —
+                               to go, to disciple, to baptise, to teach.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Our Vision -->
+                <div class="about-block">
+                    <h2>Our Vision</h2>
+                    <p>
+                        To build a digital sanctuary where believers are equipped with the Word,
+                        worshippers find Gospel music that stirs their faith, and seekers encounter
+                        the living Christ through every piece of content we publish.
+                    </p>
+                    <p>
+                        We envision Leviticals becoming a trusted voice in Christian media —
+                        not the loudest, but the most faithful.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Sidebar: Involvement -->
+            <aside class="about-sidebar">
+
+                <div class="sidebar-block">
+                    <h4>Get Involved</h4>
+
+                    <div class="involve-item">
+                        <h5>🤝 Membership</h5>
+                        <p>Join the Leviticals community. Receive devotionals, articles,
+                           and updates directly.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-gold"
+                           style="font-size:0.78rem; padding:0.5rem 1rem; margin-top:0.5rem;">
+                            Join Us
+                        </a>
+                    </div>
+
+                    <div class="involve-item" style="margin-top:1.5rem;">
+                        <h5>💛 Partnership</h5>
+                        <p>Partner with us financially to keep the Gospel broadcasting.
+                           Every contribution sustains the ministry.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-outline"
+                           style="font-size:0.78rem; padding:0.5rem 1rem; margin-top:0.5rem;">
+                            Become a Partner
+                        </a>
+                    </div>
+
+                    <div class="involve-item" style="margin-top:1.5rem;">
+                        <h5>🙌 Volunteers</h5>
+                        <p>Writers, musicians, designers, and intercessors —
+                           if you have a gift, there's a place for you here.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-outline"
+                           style="font-size:0.78rem; padding:0.5rem 1rem; margin-top:0.5rem;">
+                            Volunteer
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-block" style="margin-top:1.5rem;">
+                    <h4>The Name</h4>
+                    <p style="font-size:0.88rem; color:var(--text-light); line-height:1.7;">
+                        The Levites were chosen by God for the ministry of the Tabernacle —
+                        to carry the ark, to offer worship, to teach the Law. Leviticals
+                        carries that same spirit into the digital age: set apart, consecrated,
+                        broadcasting the holy things of God.
+                    </p>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+</section>
+
+<!-- HOLY NATION BANNER -->
+<section class="scripture-banner">
+    <div class="container">
+        <img src="{% static 'images/holy_nation_logo_white.svg' %}"
+             alt="Holy Nation"
+             style="max-width:500px; margin:0 auto; display:block; opacity:0.9;">
+    </div>
+</section>
+
+{% endblock %}

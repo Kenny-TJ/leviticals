@@ -1,0 +1,206 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Leviticals — Holy Nation | Home{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <img src="{% static 'images/logo.jpg' %}" alt="Leviticals" class="hero-logo">
+        <h1 class="hero-title">LEVITICALS</h1>
+        <p class="hero-subtitle">Holy Nation</p>
+        <p class="hero-scripture">1 Peter 2:9</p>
+        <p class="hero-tagline">
+            Proclaiming the excellencies of Him who called us out of darkness
+            into His marvellous light — through media, music, and the written Word.
+        </p>
+        <div>
+            <a href="{% url 'article_list' %}" class="btn btn-gold">Explore Content</a>
+            <a href="{% url 'about' %}" class="btn btn-outline">About Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- TODAY'S DEVOTIONAL BANNER -->
+{% if recent_devotionals %}
+{% with dev=recent_devotionals.0 %}
+<section class="devotional-banner">
+    <div class="container">
+        <div class="devotional-banner-inner">
+            <div class="banner-label">📖 Today's Devotional</div>
+            <div class="banner-content">
+                <span class="banner-scripture">{{ dev.scripture }}</span>
+                <h3>
+                    <a href="{% url 'devotional_detail' dev.slug %}">{{ dev.topic }}</a>
+                </h3>
+                <p>{{ dev.life_nugget|truncatewords:20 }}</p>
+            </div>
+            <a href="{% url 'devotional_detail' dev.slug %}" class="btn btn-gold"
+               style="white-space:nowrap; font-size:0.8rem; padding:0.7rem 1.4rem;">
+                Read Now
+            </a>
+        </div>
+    </div>
+</section>
+{% endwith %}
+{% endif %}
+
+<!-- CONTENT PILLARS -->
+<section class="section pillars">
+    <div class="container">
+        <h2 class="section-title">What We Broadcast</h2>
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <span class="pillar-icon">✍️</span>
+                <h3>Articles</h3>
+                <p>Write-ups, Bible character studies, Christian history, and biographical pieces that build faith.</p>
+                <a href="{% url 'article_list' %}" class="read-more" style="margin-top:1rem; display:inline-block;">
+                    Read Articles →
+                </a>
+            </div>
+            <div class="pillar-card">
+                <span class="pillar-icon">📖</span>
+                <h3>Daily Devotionals</h3>
+                <p>Daily meditations with scripture, life nuggets, and prayers to anchor your walk with God.</p>
+                <a href="{% url 'devotional_list' %}" class="read-more" style="margin-top:1rem; display:inline-block;">
+                    Read Devotionals →
+                </a>
+            </div>
+            <div class="pillar-card">
+                <span class="pillar-icon">🎵</span>
+                <h3>Music</h3>
+                <p>Gospel music, lyrics, chords, and music videos that glorify the name of Jesus.</p>
+                <a href="{% url 'music_list' %}" class="read-more" style="margin-top:1rem; display:inline-block;">
+                    Browse Music →
+                </a>
+            </div>
+            <div class="pillar-card">
+                <span class="pillar-icon">🎬</span>
+                <h3>Videos</h3>
+                <p>Visual content — sermons, testimonies, music videos, and Gospel broadcasts.</p>
+                <a href="{% url 'video_list' %}" class="read-more" style="margin-top:1rem; display:inline-block;">
+                    Watch Videos →
+                </a>
+            </div>
+            <div class="pillar-card">
+                <span class="pillar-icon">🌍</span>
+                <h3>Missions</h3>
+                <p>Missionary stories, outreach reports, and the work of taking the Gospel to the nations.</p>
+                <a href="{% url 'mission_list' %}" class="read-more" style="margin-top:1rem; display:inline-block;">
+                    Read Stories →
+                </a>
+            </div>
+            <div class="pillar-card">
+                <span class="pillar-icon">📡</span>
+                <h3>Broadcast</h3>
+                <p>Live and recorded Gospel broadcasts, podcasts, and media outreach programmes.</p>
+                <a href="#" class="read-more" style="margin-top:1rem; display:inline-block;">
+                    Coming Soon →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RECENT ARTICLES -->
+{% if recent_articles %}
+<section class="section" style="background: var(--deep-black);">
+    <div class="container">
+        <h2 class="section-title">Recent Articles</h2>
+        <div class="articles-grid">
+            {% for article in recent_articles %}
+            <article class="article-card">
+                {% if article.cover_image %}
+                <div class="article-card-img">
+                    <img src="{{ article.cover_image.url }}" alt="{{ article.title }}">
+                </div>
+                {% else %}
+                <div class="article-card-img placeholder">
+                    <span>✍️</span>
+                </div>
+                {% endif %}
+                <div class="article-card-body">
+                    {% if article.category %}
+                    <span class="article-tag">{{ article.category.name }}</span>
+                    {% endif %}
+                    <h3>
+                        <a href="{% url 'article_detail' article.slug %}">
+                            {{ article.title }}
+                        </a>
+                    </h3>
+                    <p class="article-excerpt">
+                        {{ article.body|truncatewords:25 }}
+                    </p>
+                    <div class="article-meta">
+                        <span>{{ article.author }}</span>
+                        <span>{{ article.created_at|date:"M d, Y" }}</span>
+                    </div>
+                    <a href="{% url 'article_detail' article.slug %}" class="read-more">
+                        Read More →
+                    </a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        <div style="text-align:center; margin-top:2.5rem;">
+            <a href="{% url 'article_list' %}" class="btn btn-outline">View All Articles</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- RECENT MUSIC -->
+{% if recent_music %}
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Recent Music</h2>
+        <div class="music-grid">
+            {% for track in recent_music %}
+            <div class="music-card">
+                {% if track.cover_image %}
+                <div class="music-card-img">
+                    <img src="{{ track.cover_image.url }}" alt="{{ track.title }}">
+                    <div class="music-overlay">
+                        <a href="{% url 'music_detail' track.slug %}" class="play-btn">▶</a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="music-card-img placeholder">
+                    <div class="music-overlay">
+                        <a href="{% url 'music_detail' track.slug %}" class="play-btn">▶</a>
+                    </div>
+                    <span class="music-note">🎵</span>
+                </div>
+                {% endif %}
+                <div class="music-card-body">
+                    <span class="article-tag">{{ track.get_music_type_display }}</span>
+                    <h3>
+                        <a href="{% url 'music_detail' track.slug %}">{{ track.title }}</a>
+                    </h3>
+                    <p class="music-artist">{{ track.artist }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div style="text-align:center; margin-top:2.5rem;">
+            <a href="{% url 'music_list' %}" class="btn btn-outline">View All Music</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- SCRIPTURE BANNER -->
+<section class="scripture-banner">
+    <div class="container">
+        <blockquote>
+            "But you are a chosen generation, a royal priesthood, a holy nation,
+            His own special people, that you may proclaim the praises of Him who
+            called you out of darkness into His marvellous light."
+        </blockquote>
+        — 1 Peter 2:9
+    </div>
+</section>
+
+{% endblock %}

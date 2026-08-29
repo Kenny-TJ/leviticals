@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Leviticals — Holy Nation{% endblock %}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/png" href="{% static 'images/menorah_fav.png' %}">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="navbar-brand">
+            <img src="{% static 'images/logo.jpg' %}" alt="Leviticals Logo">
+            <span>LEVITICALS</span>
+        </a>
+			
+		<ul class="nav-links" id="navLinks">
+			<li><a href="{% url 'home' %}">Home</a></li>
+			<li><a href="{% url 'article_list' %}">Articles</a></li>
+			<li><a href="{% url 'devotional_list' %}">Devotionals</a></li>
+			<li><a href="{% url 'music_list' %}">Music</a></li>
+			<li><a href="{% url 'video_list' %}">Videos</a></li>
+			<li><a href="{% url 'mission_list' %}">Missions</a></li>
+			<li><a href="{% url 'about' %}">About</a></li>
+		</ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- PAGE CONTENT -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+				
+				<div class="footer-brand">
+					<h3>LEVITICALS</h3>
+					<p>Broadcasting the Gospel through media, music, and the written Word.</p>
+					<div class="footer-holy-nation">
+					<img src="{% static 'images/holy_nation_logo_white.svg' %}" alt="Holy Nation — 1 Peter 2:9">
+					</div>
+				</div>
+				
+				<div class="footer-col">
+					<h4>Content</h4>
+					<ul>
+						<li><a href="{% url 'article_list' %}">Articles</a></li>
+						<li><a href="{% url 'devotional_list' %}">Devotionals</a></li>
+						<li><a href="{% url 'music_list' %}">Music</a></li>
+						<li><a href="{% url 'video_list' %}">Videos</a></li>
+					</ul>
+				</div>
+				
+                <div class="footer-col">
+                    <h4>Ministry</h4>
+                    <ul>
+                        <li><a href="{% url 'mission_list' %}">Missions</a></li>
+                        <li><a href="{% url 'broadcast_list' %}">Broadcast</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                        <li><a href="{% url 'give' %}">Give</a></li>
+                        <li><a href="#">Membership</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; {% now "Y" %} Leviticals — Holy Nation. All rights reserved. | 1 Peter 2:9</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hamburger Script -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+    </script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

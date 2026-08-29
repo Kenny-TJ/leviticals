@@ -1,0 +1,84 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Broadcast — Leviticals{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <h1>Broadcast</h1>
+        <p>Live and recorded Gospel broadcasts, podcasts, and media outreach programmes.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <!-- Type Filter -->
+        <div class="category-filter">
+            <a href="{% url 'broadcast_list' %}"
+               class="filter-btn {% if not active_type %}active{% endif %}">
+                All
+            </a>
+            {% for value, label in broadcast_type_choices %}
+            <a href="?type={{ value }}"
+               class="filter-btn {% if active_type == value %}active{% endif %}">
+                {{ label }}
+            </a>
+            {% endfor %}
+        </div>
+
+        {% if broadcasts %}
+        <div class="broadcast-grid">
+            {% for broadcast in broadcasts %}
+            <div class="broadcast-card">
+                {% if broadcast.cover_image %}
+                <div class="broadcast-card-img">
+                    <img src="{{ broadcast.cover_image.url }}" alt="{{ broadcast.title }}">
+                    <div class="music-overlay">
+                        <a href="{% url 'broadcast_detail' broadcast.slug %}"
+                           class="play-btn">▶</a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="broadcast-card-img placeholder">
+                    <div class="music-overlay">
+                        <a href="{% url 'broadcast_detail' broadcast.slug %}"
+                           class="play-btn">▶</a>
+                    </div>
+                    <span>📡</span>
+                </div>
+                {% endif %}
+                <div class="broadcast-card-body">
+                    <span class="article-tag">
+                        {{ broadcast.get_broadcast_type_display }}
+                    </span>
+                    <h3>
+                        <a href="{% url 'broadcast_detail' broadcast.slug %}">
+                            {{ broadcast.title }}
+                        </a>
+                    </h3>
+                    {% if broadcast.description %}
+                    <p class="article-excerpt">
+                        {{ broadcast.description|truncatewords:20 }}
+                    </p>
+                    {% endif %}
+                    <div class="article-meta">
+                        <span>{{ broadcast.created_at|date:"M d, Y" }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% else %}
+        <div class="empty-state">
+            <p>No broadcasts published yet. Check back soon.</p>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Devotionals — Leviticals{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <h1>Daily Devotionals</h1>
+        <p>Meditations anchored in the Word — for every season of life.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        {% if devotionals %}
+        <div class="devotional-grid">
+            {% for dev in devotionals %}
+            <div class="devotional-card">
+                <div class="devotional-date">
+                    <span class="dev-day">{{ dev.date|date:"d" }}</span>
+                    <span class="dev-month">{{ dev.date|date:"M Y" }}</span>
+                </div>
+                <div class="devotional-content">
+                    <p class="dev-scripture-ref">📖 {{ dev.scripture }}</p>
+                    <h3>
+                        <a href="{% url 'devotional_detail' dev.slug %}">
+                            {{ dev.topic }}
+                        </a>
+                    </h3>
+                    <p class="dev-excerpt">
+                        {{ dev.life_nugget|truncatewords:25 }}
+                    </p>
+                    <a href="{% url 'devotional_detail' dev.slug %}" class="read-more">
+                        Read Full Devotional →
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <p>Devotionals coming soon. Check back daily.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

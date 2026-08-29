@@ -1,0 +1,83 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}{{ broadcast.title }} — Leviticals Broadcast{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <span class="article-tag">{{ broadcast.get_broadcast_type_display }}</span>
+        <h1>{{ broadcast.title }}</h1>
+        <p class="article-meta" style="margin-top:0.5rem;">
+            {{ broadcast.created_at|date:"F d, Y" }}
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="music-layout">
+
+            <div class="music-main">
+
+                <!-- Embed Player -->
+                {% if broadcast.embed_url %}
+                <div class="video-embed">
+                    <iframe src="{{ broadcast.embed_url }}"
+                            title="{{ broadcast.title }}"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write;
+                                   encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                {% endif %}
+
+                {% if broadcast.description %}
+                <div class="dev-block" style="margin-top:2rem;">
+                    <h4>About This Broadcast</h4>
+                    <div class="article-text">
+                        {{ broadcast.description|linebreaks }}
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="article-sidebar">
+                {% if related_broadcasts %}
+                <div class="sidebar-block">
+                    <h4>More Broadcasts</h4>
+                    {% for rel in related_broadcasts %}
+                    <div class="sidebar-item">
+                        <a href="{% url 'broadcast_detail' rel.slug %}">
+                            {{ rel.title }}
+                        </a>
+                        <span class="sidebar-date">
+                            {{ rel.get_broadcast_type_display }}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="sidebar-block">
+                    <h4>Stay Connected</h4>
+                    <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:1rem;">
+                        Never miss a broadcast. Partner with us to keep
+                        the Gospel on air.
+                    </p>
+                    <a href="{% url 'contact' %}" class="btn btn-gold"
+                       style="font-size:0.8rem; padding:0.6rem 1.2rem;">
+                        Get in Touch
+                    </a>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

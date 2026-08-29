@@ -1,0 +1,65 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}{{ video.title }} — Leviticals Videos{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <span class="article-tag">{{ video.get_video_type_display }}</span>
+        <h1>{{ video.title }}</h1>
+        <p class="article-meta" style="margin-top:0.5rem;">
+            {{ video.created_at|date:"F d, Y" }}
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="music-layout">
+
+            <div class="music-main">
+                <!-- YouTube Embed -->
+                <div class="video-embed">
+                    <iframe src="{{ video.youtube_url }}"
+                            title="{{ video.title }}"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write;
+                                   encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+
+                {% if video.description %}
+                <div class="dev-block" style="margin-top:2rem;">
+                    <h4>About This Video</h4>
+                    <div class="article-text">
+                        {{ video.description|linebreaks }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="article-sidebar">
+                {% if related_videos %}
+                <div class="sidebar-block">
+                    <h4>More Videos</h4>
+                    {% for rel in related_videos %}
+                    <div class="sidebar-item">
+                        <a href="{% url 'video_detail' rel.slug %}">{{ rel.title }}</a>
+                        <span class="sidebar-date">
+                            {{ rel.get_video_type_display }}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </aside>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
