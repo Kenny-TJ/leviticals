@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-tz)$t7_qmod65l+2s@62cnxum0zck-nde&a2k&$bfoj1=arj_)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['leviticals.pythonanywhere.com', 'www.leviticals.pythonanywhere.com']
 
 
 # Application definition
