@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-tz)$t7_qmod65l+2s@62cnxum0zck-nde&a2k&$bfoj1=arj_)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['leviticals.pythonanywhere.com', 'www.leviticals.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'leviticals.pythonanywhere.com', 'www.leviticals.pythonanywhere.com']
 
 
 # Application definition
@@ -140,31 +140,25 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # CKEditor Settings
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-CKEDITOR_CONFIGS = {
+CKEDITOR_5_CONFIGS = {
     'default': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Bold', 'Italic', 'Underline', 'Strike'],
-            ['NumberedList', 'BulletedList', 'Blockquote'],
-            ['Link', 'Unlink'],
-            ['RemoveFormat', 'Source'],
-            ['TextColor', 'BGColor'],
-            ['Undo', 'Redo'],
-        ],
-        'height': 400,
-        'width': '100%',
-        'removePlugins': 'stylesheetparser',
-        'allowedContent': True,
+        'toolbar': ['heading', '|', 'bold', 'italic', 'link', 'blockQuote', 'imageUpload', 'bulletedList', 'numberedList', 'outdent', 'indent'],
+        'image': {
+            'toolbar': ['imageTextAlternative', '|', 'imageStyleFull', 'imageStyleSide'],
+        },
     },
-    'minimal': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList'],
-            ['Link', 'Unlink'],
-            ['RemoveFormat'],
-        ],
-        'height': 250,
-        'width': '100%',
+    'extends': {
+        'blockToolbar': ['paragraph', 'heading1', 'heading2', 'heading3', '|', 'bulletedList', 'numberedList', '|', 'blockQuote', 'codeBlock'],
+        'toolbar': ['heading', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'link', 'underline', 'strikethrough', 'code', 'subscript', 'superscript', 'highlight', '|', 'codeBlock', 'sourceEditing', 'insertTable', 'mediaEmbed', 'insertImage'],
+        'image': {
+            'toolbar': ['imageTextAlternative', '|', 'imageStyleInline', 'imageStyleBlock', 'imageStyleSide', '|', 'resizeImage'],
+        },
     },
+    'list': {
+        'properties': {
+            'styles': 'true',
+            'startIndex': 'true',
+            'reversed': 'true',
+        }
+    }
 }
