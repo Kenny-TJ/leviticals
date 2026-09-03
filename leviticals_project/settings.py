@@ -140,25 +140,17 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # CKEditor Settings
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-CKEDITOR_5_CONFIGS = {
+CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': ['heading', '|', 'bold', 'italic', 'link', 'blockQuote', 'imageUpload', 'bulletedList', 'numberedList', 'outdent', 'indent'],
-        'image': {
-            'toolbar': ['imageTextAlternative', '|', 'imageStyleFull', 'imageStyleSide'],
-        },
+        'toolbar': ['Format', 'Bold', 'Italic', 'Underline', 'Strike', '-',
+                    'Subscript', 'Superscript', '-', 'InsertLink', 'Unlink', '-',
+                    'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
+                    'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-',
+                    'Image', 'Table', '-', 'Source', 'RemoveFormat', 'CopyFormatting', 'PasteText'],
+        'height': 300,
+        'width': '100%',
     },
-    'extends': {
-        'blockToolbar': ['paragraph', 'heading1', 'heading2', 'heading3', '|', 'bulletedList', 'numberedList', '|', 'blockQuote', 'codeBlock'],
-        'toolbar': ['heading', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'link', 'underline', 'strikethrough', 'code', 'subscript', 'superscript', 'highlight', '|', 'codeBlock', 'sourceEditing', 'insertTable', 'mediaEmbed', 'insertImage'],
-        'image': {
-            'toolbar': ['imageTextAlternative', '|', 'imageStyleInline', 'imageStyleBlock', 'imageStyleSide', '|', 'resizeImage'],
-        },
+    'minimal': {
+        'toolbar': [['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']],
     },
-    'list': {
-        'properties': {
-            'styles': 'true',
-            'startIndex': 'true',
-            'reversed': 'true',
-        }
-    }
 }
