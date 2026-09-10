@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
-from ckeditor_uploader.fields import RichTextUploadingField
 
 
 def unique_slug(instance, title, slug_field='slug'):
@@ -41,7 +40,7 @@ class Article(models.Model):
     slug         = models.SlugField(unique=True, blank=True)
     category     = models.ForeignKey(ArticleCategory, on_delete=models.SET_NULL, null=True, blank=True)
     author       = models.CharField(max_length=150, default='Kenny Mercy')
-    body         = RichTextUploadingField()
+    body         = models.TextField()
     cover_image  = models.ImageField(upload_to='articles/', blank=True, null=True)
     is_published = models.BooleanField(default=False)
     created_at   = models.DateTimeField(default=timezone.now)
@@ -66,9 +65,9 @@ class Devotional(models.Model):
     topic           = models.CharField(max_length=300)
     slug            = models.SlugField(unique=True, blank=True)
     scripture       = models.CharField(max_length=200, help_text="e.g. John 3:16")
-    scripture_text  = RichTextUploadingField(help_text="The full scripture passage")
-    life_nugget     = RichTextUploadingField(help_text="The main devotional body")
-    prayer          = RichTextUploadingField()
+    scripture_text  = models.TextField(help_text="The full scripture passage")
+    life_nugget     = models.TextField(help_text="The main devotional body")
+    prayer          = models.TextField()
     further_studies = models.CharField(max_length=300, blank=True,
                                        help_text="e.g. Psalm 23, Romans 8:1-11")
     cover_image     = models.ImageField(upload_to='devotionals/', blank=True, null=True)
@@ -161,7 +160,7 @@ class MissionStory(models.Model):
     slug         = models.SlugField(unique=True, blank=True)
     location     = models.CharField(max_length=200, blank=True,
                                     help_text="e.g. Ogoni, Rivers State")
-    body         = RichTextUploadingField()
+    body         = models.TextField()
     cover_image  = models.ImageField(upload_to='missions/', blank=True, null=True)
     author       = models.CharField(max_length=150, default='Kenny Mercy')
     is_published = models.BooleanField(default=False)
