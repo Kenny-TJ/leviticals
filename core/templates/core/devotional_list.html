@@ -30,7 +30,7 @@
                         </a>
                     </h3>
                     <p class="dev-excerpt">
-                        {{ dev.life_nugget|truncatewords:25 }}
+                        {{ dev.life_nugget|truncatewords:25|safe }}
                     </p>
                     <a href="{% url 'devotional_detail' dev.slug %}" class="read-more">
                         Read Full Devotional →

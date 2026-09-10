@@ -52,7 +52,7 @@
                 {% endif %}
                 <div class="broadcast-card-body">
                     <span class="article-tag">
-                        {{ broadcast.get_broadcast_type_display }}
+                        {{ broadcast.get_broadcast_type_display|safe }}
                     </span>
                     <h3>
                         <a href="{% url 'broadcast_detail' broadcast.slug %}">
