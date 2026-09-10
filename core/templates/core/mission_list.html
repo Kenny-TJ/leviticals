@@ -30,15 +30,15 @@
                 {% endif %}
                 <div class="mission-card-body">
                     {% if mission.location %}
-                    <p class="mission-location">📍 {{ mission.location }}</p>
+                    <p class="mission-location">📍 {{ mission.location|safe }}</p>
                     {% endif %}
                     <h3>
                         <a href="{% url 'mission_detail' mission.slug %}">
-                            {{ mission.title }}
+                            {{ mission.title|safe }}
                         </a>
                     </h3>
                     <p class="article-excerpt">
-                        {{ mission.body|truncatewords:30 }}
+                        {{ mission.body|truncatewords:30|safe }}
                     </p>
                     <div class="article-meta">
                         <span>{{ mission.author }}</span>

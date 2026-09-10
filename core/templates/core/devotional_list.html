@@ -23,10 +23,10 @@
                     <span class="dev-month">{{ dev.date|date:"M Y" }}</span>
                 </div>
                 <div class="devotional-content">
-                    <p class="dev-scripture-ref">📖 {{ dev.scripture }}</p>
+                    <p class="dev-scripture-ref">📖 {{ dev.scripture|safe }}</p>
                     <h3>
                         <a href="{% url 'devotional_detail' dev.slug %}">
-                            {{ dev.topic }}
+                            {{ dev.topic|safe }}
                         </a>
                     </h3>
                     <p class="dev-excerpt">

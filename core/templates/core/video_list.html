@@ -44,10 +44,10 @@
                 <div class="video-card-body">
                     <span class="article-tag">{{ video.get_video_type_display }}</span>
                     <h3>
-                        <a href="{% url 'video_detail' video.slug %}">{{ video.title }}</a>
+                        <a href="{% url 'video_detail' video.slug %}">{{ video.title|safe }}</a>
                     </h3>
                     {% if video.description %}
-                    <p class="article-excerpt">{{ video.description|truncatewords:20 }}</p>
+                    <p class="article-excerpt">{{ video.description|truncatewords:20|safe }}</p>
                     {% endif %}
                     <div class="article-meta">
                         <span>{{ video.created_at|date:"M d, Y" }}</span>

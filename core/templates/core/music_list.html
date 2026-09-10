@@ -51,9 +51,9 @@
                 <div class="music-card-body">
                     <span class="article-tag">{{ track.get_music_type_display }}</span>
                     <h3>
-                        <a href="{% url 'music_detail' track.slug %}">{{ track.title }}</a>
+                        <a href="{% url 'music_detail' track.slug %}">{{ track.title|safe }}</a>
                     </h3>
-                    <p class="music-artist">{{ track.artist }}</p>
+                    <p class="music-artist">{{ track.artist|safe }}</p>
                 </div>
             </div>
             {% endfor %}
