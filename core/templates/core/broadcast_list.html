@@ -56,12 +56,12 @@
                     </span>
                     <h3>
                         <a href="{% url 'broadcast_detail' broadcast.slug %}">
-                            {{ broadcast.title }}
+                            {{ broadcast.title|safe }}
                         </a>
                     </h3>
                     {% if broadcast.description %}
                     <p class="article-excerpt">
-                        {{ broadcast.description|truncatewords:20 }}
+                        {{ broadcast.description|truncatewords:20|safe }}
                     </p>
                     {% endif %}
                     <div class="article-meta">

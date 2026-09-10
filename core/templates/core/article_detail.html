@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}{{ article.title }} — Leviticals{% endblock %}
+{% block title %}{{ article.title|safe}} — Leviticals{% endblock %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
         {% if article.category %}
         <span class="article-tag">{{ article.category.name }}</span>
         {% endif %}
-        <h1>{{ article.title }}</h1>
+        <h1>{{ article.title|safe }}</h1>
         <div class="article-meta" style="margin-top:1rem;">
             <span>By {{ article.author }}</span>
             <span>{{ article.created_at|date:"F d, Y" }}</span>
@@ -42,7 +42,7 @@
                     {% for rel in related_articles %}
                     <div class="sidebar-item">
                         <a href="{% url 'article_detail' rel.slug %}">
-                            {{ rel.title }}
+                            {{ rel.title|safe }}
                         </a>
                         <span class="sidebar-date">
                             {{ rel.created_at|date:"M d, Y" }}

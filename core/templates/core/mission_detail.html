@@ -8,7 +8,7 @@
 <section class="page-hero">
     <div class="container">
         {% if mission.location %}
-        <p class="dev-date-label">📍 {{ mission.location }}</p>
+        <p class="dev-date-label">📍 {{ mission.location|safe }}</p>
         {% endif %}
         <h1>{{ mission.title }}</h1>
         <div class="article-meta" style="margin-top:1rem;">
@@ -39,7 +39,7 @@
                     <h4>More Mission Stories</h4>
                     {% for rel in related_missions %}
                     <div class="sidebar-item">
-                        <a href="{% url 'mission_detail' rel.slug %}">{{ rel.title }}</a>
+                        <a href="{% url 'mission_detail' rel.slug %}">{{ rel.title|safe }}</a>
                         {% if rel.location %}
                         <span class="sidebar-date">📍 {{ rel.location }}</span>
                         {% endif %}

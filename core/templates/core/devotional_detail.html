@@ -1,15 +1,15 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}{{ devotional.topic }} — Leviticals Devotional{% endblock %}
+{% block title %}{{ devotional.topic|safe}} — Leviticals Devotional{% endblock %}
 
 {% block content %}
 
 <section class="page-hero">
     <div class="container">
         <p class="dev-date-label">{{ devotional.date|date:"l, F d, Y" }}</p>
-        <h1>{{ devotional.topic }}</h1>
-        <p class="dev-scripture-hero">📖 {{ devotional.scripture }}</p>
+        <h1>{{ devotional.topic|safe }}</h1>
+        <p class="dev-scripture-hero">📖 {{ devotional.scripture|safe }}</p>
     </div>
 </section>
 
@@ -29,7 +29,7 @@
                 <!-- Scripture Text -->
                 <div class="dev-block dev-scripture-block">
                     <h4>📜 Scripture</h4>
-                    <blockquote>{{ devotional.scripture_text }}</blockquote>
+                    <blockquote>{{ devotional.scripture_text|safe }}</blockquote>
                     — {{ devotional.scripture|safe }}
                 </div>
 
@@ -53,7 +53,7 @@
                 {% if devotional.further_studies %}
                 <div class="dev-block">
                     <h4>📚 Further Studies</h4>
-                    <p class="further-studies">{{ devotional.further_studies }}</p>
+                    <p class="further-studies">{{ devotional.further_studies|safe }}</p>
                 </div>
                 {% endif %}
 
@@ -66,7 +66,7 @@
                 <div class="dev-navigation">
                     {% if prev_dev %}
                     <a href="{% url 'devotional_detail' prev_dev.slug %}" class="dev-nav-btn">
-                        ← {{ prev_dev.date|date:"M d" }}: {{ prev_dev.topic|truncatewords:5 }}
+                        ← {{ prev_dev.date|date:"M d" }}: {{ prev_dev.topic|truncatewords:5|safe }}
                     </a>
                     {% else %}
                     <span></span>
@@ -74,7 +74,7 @@
 
                     {% if next_dev %}
                     <a href="{% url 'devotional_detail' next_dev.slug %}" class="dev-nav-btn">
-                        {{ next_dev.date|date:"M d" }}: {{ next_dev.topic|truncatewords:5 }} →
+                        {{ next_dev.date|date:"M d" }}: {{ next_dev.topic|truncatewords:5|safe }} →
                     </a>
                     {% endif %}
                 </div>
