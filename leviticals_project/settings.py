@@ -74,3 +74,18 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Security headers for YouTube embeds
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
+
+# Add this header via middleware
+class AllowEmbedMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+        response['Permissions-Policy'] = 'unload=*, geolocation=*, microphone=*, camera=*'
+        return response
+
+MIDDLEWARE.insert(0, 'leviticals_project.settings.AllowEmbedMiddleware')
